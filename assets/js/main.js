@@ -1,7 +1,7 @@
 /**
-* Template Name: Vlava
-* Updated: Sep 18 2023 with Bootstrap v5.3.2
-* Template URL: https://bootstrapmade.com/vlava-free-bootstrap-one-page-template/
+* Template Name: Folio
+* Updated: Nov 17 2023 with Bootstrap v5.3.2
+* Template URL: https://bootstrapmade.com/folio-bootstrap-portfolio-template/
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
@@ -69,7 +69,7 @@
     let offset = header.offsetHeight
 
     if (!header.classList.contains('header-scrolled')) {
-      offset -= 10
+      offset -= 16
     }
 
     let elementPos = select(el).offsetTop
@@ -160,9 +160,25 @@
   });
 
   /**
+   * Hero type effect
+   */
+  const typed = select('.typed')
+  if (typed) {
+    let typed_strings = typed.getAttribute('data-typed-items')
+    typed_strings = typed_strings.split(',')
+    new Typed('.typed', {
+      strings: typed_strings,
+      loop: true,
+      typeSpeed: 100,
+      backSpeed: 50,
+      backDelay: 2000
+    });
+  }
+
+  /**
    * Testimonials slider
    */
-  new Swiper('.testimonials-slider', {
+  new Swiper('.services-slider', {
     speed: 600,
     loop: true,
     autoplay: {
@@ -174,6 +190,20 @@
       el: '.swiper-pagination',
       type: 'bullets',
       clickable: true
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 20
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 20
+      },
+      1200: {
+        slidesPerView: 4,
+        spaceBetween: 20
+      }
     }
   });
 
